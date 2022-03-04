@@ -18,19 +18,11 @@ public:
         while(l1!=NULL && l2!=NULL){
             ListNode* cut=new ListNode(-1);
             sum=l1->val+l2->val+rem;
-            if(sum<10){
-                cut->val=sum;
-                temp->next=cut;
-                temp=temp->next;
-                rem=0;
-            }
-            if(sum>=10){
                 rem=sum/10;
                 sum=sum%10;
                 cut->val=sum;
                 temp->next=cut;
                 temp=temp->next;
-            }
             l1=l1->next;
             l2=l2->next;
         }
