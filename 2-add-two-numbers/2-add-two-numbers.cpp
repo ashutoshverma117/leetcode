@@ -27,12 +27,6 @@ public:
             l2=l2->next;
         }
          while(l2){
-            if(rem==0){
-            temp->next=l2;
-            l2=l2->next;
-            temp=temp->next;
-            }
-            else{
                 sum=l2->val+rem;
                 rem=sum/10;
                 sum=sum%10;
@@ -41,15 +35,9 @@ public:
                 l2=l2->next;
                 temp=temp->next;
                 
-            }
+            
          }
              while(l1){
-            if(rem==0){
-            temp->next=l1;
-            l1=l1->next;
-            temp=temp->next;
-            }
-            else{
                 sum=l1->val+rem;
                 rem=sum/10;
                 sum=sum%10;
@@ -58,7 +46,7 @@ public:
                 l1=l1->next;
                 temp=temp->next;
                 
-            }
+            
         }
              if(rem!=0){
                  ListNode* v=new ListNode(1);
