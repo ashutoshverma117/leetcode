@@ -1,9 +1,9 @@
 class Solution {
     int count(int i,int j,int n,int m,vector<vector<int>>& obstacleGrid,vector<vector<int>>&dp){
+          if(i==n-1 && j==m-1 && obstacleGrid[i][j]!=1)
+            return 1;
         if(i>n-1 || j>m-1 || obstacleGrid[i][j]==1)
             return 0;
-        if(i==n-1 && j==m-1)
-            return 1;
         if(dp[i][j]!=-1)
             return dp[i][j];
         else{
