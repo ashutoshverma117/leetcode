@@ -17,7 +17,7 @@ class Solution
             if(S[i]>='0' && S[i]<='9'){
                 stk.push(S[i]-'0');
             }
-            else if(S[i]=='*' && !stk.empty()){
+            else if(S[i]=='*'){
                 int x=stk.top();
                 stk.pop();
                 int y=stk.top();
@@ -25,7 +25,7 @@ class Solution
                 int z=x*y;
                 stk.push(z);
             }
-             else if(S[i]=='+' && !stk.empty()){
+             else if(S[i]=='+'){
                 int x=stk.top();
                 stk.pop();
                 int y=stk.top();
@@ -33,7 +33,7 @@ class Solution
                 int z=y+x;
                 stk.push(z);
             }
-             else if(S[i]=='-' && !stk.empty()){
+             else if(S[i]=='-'){
                 int x=stk.top();
                 stk.pop();
                 int y=stk.top();
@@ -42,13 +42,12 @@ class Solution
                 stk.push(z);
             }
              else{
-                 if(!stk.empty()){
                 int x=stk.top();
                 stk.pop();
                 int y=stk.top();
                 stk.pop();
                 int z=y/x;
-                stk.push(z);}
+                stk.push(z);
             }
         }
         return stk.top();
