@@ -6,13 +6,13 @@ public:
             mappi[s[i]]++;
         }
         for(int i=0;i<t.size();i++){
-            if(mappi.find(t[i])==mappi.end())
-                mappi[t[i]]++;
-            else
+            // if(mappi.find(t[i])==mappi.end())
+            //     mappi[t[i]]++;
+            // else
             mappi[t[i]]--;
         }
         for(auto x:mappi){
-            if(x.second>0)
+            if(x.second!=0)
                 return false;
         }return true;
     }
