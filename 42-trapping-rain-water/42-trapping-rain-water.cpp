@@ -8,6 +8,7 @@ public:
         v[0]=height[0];
         for(int i=1;i<n;i++){
             v[i]=max(v[i-1],height[i]);
+  
         }
         k[n-1]=height[n-1];
         for(int j=n-2;j>=0;j--){
