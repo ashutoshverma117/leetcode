@@ -11,21 +11,26 @@
  */
 class Solution {
 public:
-    vector<int>v;
+    long long p=0;
+    long long k=-2147483649;
     void inorder(TreeNode *root){
         if(root==NULL){
             return;
         }
         inorder(root->left);
-        v.push_back(root->val);
+        if(k>=root->val){
+            p=1;
+        }
+        k=root->val;
         inorder(root->right);
     }
     bool isValidBST(TreeNode* root) {
+        if(root->left==NULL && root->right==NULL)
+            return true;
         inorder(root);
-        for(int i=1;i<v.size();i++){
-            if(v[i-1]>=v[i])
-                return false;
-        }
-        return true;
+        if(p==1)
+            return false;
+        else
+            return true;
     }
 };
