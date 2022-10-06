@@ -1,18 +1,19 @@
 class Solution {
-    int countmin(int i,int n,vector<int>& cost,vector<int>&dp){
-        if(i>n-1)return 0;
-        if(dp[i]!=-1)return dp[i];
-        return dp[i]=min(countmin(i+1,n,cost,dp)+cost[i],countmin(i+2,n,cost,dp)+cost[i]);
-    }
 public:
+    int solve(vector<int>&cost,int i,int n,vector<int>&cut){
+        if(i>n)
+            return 0;
+        if(i==n)
+            return 0;
+        if(cut[i]!=-1){
+            return cut[i];
+        }
+        return cut[i]=min(solve(cost,i+1,n,cut)+cost[i],solve(cost,i+2,n,cut)+cost[i]);
+    }
     int minCostClimbingStairs(vector<int>& cost) {
         int n=cost.size();
         vector<int>dp(n,-1);
-        int minimum=INT_MAX;
-        for(int i=0;i<2;i++){
-           minimum=min(countmin(i,n,cost,dp),minimum);
-        } 
-         return minimum;    
-        
+        vector<int>dp1(n,-1);
+        return min(solve(cost,0,n,dp),solve(cost,1,n,dp1));
     }
 };
