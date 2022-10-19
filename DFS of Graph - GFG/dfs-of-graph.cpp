@@ -1,37 +1,33 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution {
-  public:
-    // Function to return a list containing the DFS traversal of the graph.
-    
-    void dfs(int i,vector<int> adj[],vector<int> &vis,vector<int> &storedfs){
-        storedfs.push_back(i);
-        vis[i]=1;
-        for(auto x:adj[i]){
-            if(!vis[x]){
-                dfs(x,adj,vis,storedfs);
+    void dfsit(int node,vector<bool>&visited,vector<int>&dfs,vector<int>adj[]){
+        dfs.push_back(node);
+        visited[node]=1;
+        for(auto x:adj[node]){
+            if(!visited[x]){
+                dfsit(x,visited,dfs,adj);
             }
         }
     }
-    
+  public:
+    // Function to return a list containing the DFS traversal of the graph.
     vector<int> dfsOfGraph(int V, vector<int> adj[]) {
-        vector<int>vis(V+1,0);
-        vector<int>storedfs;
-        
+        vector<int>dfs;
+        vector<bool>visited(V+1,false);
         for(int i=0;i<V;i++){
-            if(!vis[i]){
-                dfs(i,adj,vis,storedfs);
+            if(!visited[i]){
+                dfsit(i,visited,dfs,adj);
             }
         }
-        return storedfs;
-        // Code here
+        return dfs;
     }
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main() {
     int tc;
     cin >> tc;
@@ -57,4 +53,5 @@ int main() {
         cout << endl;
     }
     return 0;
-}  // } Driver Code Ends
+}
+// } Driver Code Ends
