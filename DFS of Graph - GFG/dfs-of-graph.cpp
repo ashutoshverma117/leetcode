@@ -4,23 +4,24 @@ using namespace std;
 
 // } Driver Code Ends
 class Solution {
-    void dfsit(int node,vector<bool>&visited,vector<int>&dfs,vector<int>adj[]){
+  public:
+    // Function to return a list containing the DFS traversal of the graph.
+    vector<int>dfs;
+    void dfsit(int node,vector<bool>&vis,vector<int>adj[]){
         dfs.push_back(node);
-        visited[node]=1;
+        vis[node]=1;
         for(auto x:adj[node]){
-            if(!visited[x]){
-                dfsit(x,visited,dfs,adj);
+            if(!vis[x]){
+            vis[x]=1;
+            dfsit(x,vis,adj);
             }
         }
     }
-  public:
-    // Function to return a list containing the DFS traversal of the graph.
     vector<int> dfsOfGraph(int V, vector<int> adj[]) {
-        vector<int>dfs;
-        vector<bool>visited(V+1,false);
+        vector<bool>vis(V+1,0);
         for(int i=0;i<V;i++){
-            if(!visited[i]){
-                dfsit(i,visited,dfs,adj);
+            if(!vis[i]){
+                dfsit(i,vis,adj);
             }
         }
         return dfs;
